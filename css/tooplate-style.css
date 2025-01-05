@@ -40,7 +40,7 @@ a {
   transition: all 0.4s ease;
 }
 a:hover {
-  color: #ffc200 !important;
+  color: #929292 !important;
 }
 
 .navbar-brand .uil {
@@ -99,7 +99,7 @@ b, strong {
   color: #ffffff;
 }
 .custom-btn.custom-btn-bg:hover {
-  background: #ffc200;
+  background: #929292;
   color: #ffffff !important;
 }
 
@@ -116,7 +116,7 @@ b, strong {
 }
 
 .animated-item {
-  color: #ffc200;
+  color: #929292;
 }
 
 .animated-item {
@@ -433,7 +433,7 @@ b, strong {
   border-color: #ffc200;
 }
 .contact-form .submit-btn {
-  background: #ffc200;
+  background: #353535;
   border-radius: 50px;
   color: #ffffff;
   font-weight: bold;
