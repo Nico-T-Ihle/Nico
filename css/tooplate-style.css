@@ -398,7 +398,7 @@ b, strong {
   font-size: inherit;
 }
 .owl-theme .owl-nav [class*=owl-]:hover {
-  color: #ffc200;
+  color: #5b5b5b;
 }
 .owl-theme .owl-dots .owl-dot {
   outline: none;
