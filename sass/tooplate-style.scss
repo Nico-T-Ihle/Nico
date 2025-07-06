@@ -520,6 +520,7 @@ b, strong {
 	border-radius: 0 0 3px 3px;
 	position: relative;
 	bottom: 8px;
+	gap: 45px;
 	p, a {
 		color: #f7f3f3;
 	}
@@ -655,4 +656,9 @@ b, strong {
 			vertical-align: top;
 		}
 	}
+}
+
+
+.contact-info {
+	gap: 45px;
 }
