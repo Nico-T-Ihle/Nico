@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datenschutz — Nico Ihle</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+
+    :root {
+      --fg:     #1a1a1a;
+      --fg2:    #555;
+      --fg3:    #999;
+      --border: rgba(0,0,0,0.1);
+      --bg:     #faf9f6;
+      --bg2:    #f0efe9;
+      --bg3:    #e6e5de;
+      --spot:   rgba(0,0,0,0.035);
+      --grad1:  rgba(255,224,150,0.75);
+      --grad2:  rgba(180,215,255,0.65);
+      --grad3:  rgba(220,195,255,0.55);
+    }
+
+    /* ── DARK MODE ── */
+    [data-theme="dark"] {
+      --fg:     #f0f0ee;
+      --fg2:    #999;
+      --fg3:    #555;
+      --border: rgba(255,255,255,0.08);
+      --bg:     #0e0e0d;
+      --bg2:    #171716;
+      --bg3:    #1e1e1c;
+      --spot:   rgba(255,255,255,0.04);
+      --grad1:  rgba(90,55,5,0.80);
+      --grad2:  rgba(10,30,70,0.75);
+      --grad3:  rgba(50,10,80,0.65);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --fg:     #f0f0ee;
+        --fg2:    #999;
+        --fg3:    #555;
+        --border: rgba(255,255,255,0.08);
+        --bg:     #0e0e0d;
+        --bg2:    #171716;
+        --bg3:    #1e1e1c;
+        --spot:   rgba(255,255,255,0.04);
+        --grad1:  rgba(90,55,5,0.80);
+        --grad2:  rgba(10,30,70,0.75);
+        --grad3:  rgba(50,10,80,0.65);
+      }
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Jost', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background .4s, color .4s;
+    }
+
+    /* ── GRADIENT BG ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: -20%;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 110% 80% at 5%  -5%,  var(--grad1) 0%, transparent 60%),
+        radial-gradient(ellipse 90%  70% at 95%  5%,  var(--grad2) 0%, transparent 58%),
+        radial-gradient(ellipse 80%  65% at 50% 105%, var(--grad3) 0%, transparent 55%);
+      transition: background .4s;
+    }
+
+    /* ── LAYOUT ── */
+    .wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 6rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-header {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 6vw, 3.2rem);
+      font-weight: 300;
+      letter-spacing: -.02em;
+      color: var(--fg);
+      margin-bottom: .4rem;
+    }
+    .page-subtitle {
+      font-size: 11px;
+      font-family: 'DM Mono', monospace;
+      color: var(--fg3);
+      letter-spacing: .08em;
+    }
+    .legal-section {
+      margin-bottom: 2.5rem;
+    }
+    .legal-section h2 {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .16em;
+      color: var(--fg3);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .legal-section p {
+      font-size: .88rem;
+      line-height: 1.8;
+      color: var(--fg2);
+      margin-bottom: .6rem;
+    }
+    .legal-section a {
+      color: var(--fg);
+      text-decoration: none;
+      border-bottom: 0.5px solid var(--border);
+      transition: border-color .2s;
+    }
+    .legal-section a:hover { border-color: var(--fg); }
+    .info-box {
+      background: var(--bg2);
+      border: 0.5px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem 1.4rem;
+      margin-bottom: 2.5rem;
+      display: flex;
+      gap: .75rem;
+      align-items: flex-start;
+    }
+    .info-box-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #22c55e;
+      flex-shrink: 0;
+      margin-top: .35rem;
+    }
+    .info-box p {
+      font-size: .84rem;
+      line-height: 1.7;
+      color: var(--fg2);
+      margin: 0;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: 12px;
+      font-family: 'DM Mono', monospace;
+      color: var(--fg3);
+      text-decoration: none;
+      letter-spacing: .05em;
+      transition: color .2s;
+      margin-bottom: 3rem;
+    }
+    .back-link:hover { color: var(--fg); }
+    .back-arrow { transition: transform .2s cubic-bezier(.16,1,.3,1); }
+    .back-link:hover .back-arrow { transform: translateX(-3px); }
+  </style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="spotlight"></div>
+
+<div class="wrap">
+
+  <a class="back-link" href="index.html">
+    <span class="back-arrow">←</span> Zurück
+  </a>
+
+  <div class="page-header">
+    <h1 class="page-title">Datenschutz&shy;erklärung</h1>
+    <p class="page-subtitle">Gemäß DSGVO · Stand April 2026</p>
+  </div>
+
+  <div class="info-box">
+    <span class="info-box-dot"></span>
+    <p>
+      Diese Website verwendet <strong>keine Cookies</strong>, kein Tracking, keine Analyse-Tools
+      und keine eingebetteten Drittanbieter-Dienste. Es werden keinerlei personenbezogene Daten
+      durch mich aktiv erhoben oder gespeichert.
+    </p>
+  </div>
+
+  <div class="legal-section">
+    <h2>Verantwortlicher</h2>
+    <p>
+      Nico Ihle<br />
+      [Straße und Hausnummer]<br />
+      [PLZ] Karlsruhen<br />
+      Deutschland
+    </p>
+  </div>
+
+  <div class="legal-section">
+    <h2>Erhebung von Daten</h2>
+    <p>
+      Ich erhebe keine personenbezogenen Daten über diese Website. Es gibt kein Kontaktformular,
+      keine Newsletter-Anmeldung, keine Nutzerkonten und keine Kommentarfunktion. Klickst du
+      auf eine E-Mail-Adresse, öffnet sich dein lokales E-Mail-Programm — das liegt vollständig
+      in deiner Kontrolle.
+    </p>
+  </div>
+
+  <div class="legal-section">
+    <h2>Hosting via GitHub Pages</h2>
+    <p>
+      Diese Website wird über <strong>GitHub Pages</strong> gehostet (GitHub, Inc., 88 Colin P
+      Kelly Jr St, San Francisco, CA 94107, USA). Beim Abruf der Seite werden von GitHub
+      automatisch Server-Logfiles erstellt, die technische Daten wie IP-Adresse, Browser-Typ,
+      Betriebssystem, Referrer-URL und Uhrzeit des Zugriffs enthalten können.
+    </p>
+    <p>
+      Diese Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes
+      Interesse an einem sicheren und stabilen Betrieb). Ich habe auf diese Logfiles keinen
+      Zugriff. Weitere Informationen findest du in der
+      <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Datenschutzerklärung von GitHub</a>.
+    </p>
+  </div>
+
+  <div class="legal-section">
+    <h2>Externe Links</h2>
+    <p>
+      Diese Website enthält Links zu GitHub, LinkedIn und ähnlichen Plattformen. Sobald du
+      diese Links klickst, gelten die Datenschutzbestimmungen der jeweiligen Anbieter.
+      Ich habe keinen Einfluss auf deren Datenverarbeitung.
+    </p>
+  </div>
+
+  <div class="legal-section">
+    <h2>Deine Rechte</h2>
+    <p>
+      Da ich keine personenbezogenen Daten erhebe oder speichere, gibt es diesbezüglich
+      nichts auszukunften, zu berichtigen oder zu löschen. Solltest du dennoch Fragen haben,
+      erreichst du mich jederzeit per E-Mail:
+      <a href="mailto:mail@example.com">mail@example.com</a>
+    </p>
+    <p>
+      Du hast zudem das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren.
+      Die zuständige Behörde für Berlin ist der
+      <a href="https://www.datenschutz-berlin.de" target="_blank" rel="noopener">Berliner Beauftragte für Datenschutz und Informationsfreiheit</a>.
+    </p>
+  </div>
+
+  <div class="legal-section">
+    <h2>Cookies &amp; Tracking</h2>
+    <p>
+      Diese Website setzt keinerlei Cookies und verwendet weder Google Analytics, noch
+      Matomo, Meta Pixel, Hotjar oder vergleichbare Tracking-Dienste. Es gibt keine
+      Werbeanzeigen und kein Retargeting.
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>
